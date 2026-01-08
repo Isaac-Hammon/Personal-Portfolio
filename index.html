@@ -39,6 +39,43 @@
             </div>
         </section>
 
+        <section>
+            <blockquote>
+            <h3>If you would like to contact me, please fill out the form below:</h3>
+            </blockquote>
+
+            <form method="POST">
+            <div class="input-row"></div>
+                <div class="input-group">
+                    <label id="first-name">First Name:</label>
+                    <input name="first-name" type="text" placeholder="Enter your first name" required />
+                </div>
+                <div class="input-group">
+                    <label for="last-name">Last Name:</label>
+                    <input name="last-name" type="text" placeholder="Enter your last name" required />
+                </div>
+                <div class="input-group">
+                    <label id="email">Email:</label>
+                    <input name="email" type="email" placeholder="Enter your email" required />
+                </div>
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="message">Select Message Type:</label>
+                    <select id="message">
+                        <option value="inquiry">Business Inquiry</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="question">General Question</option>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="message-content">Message:</label>
+                    <textarea id="message-content" rows="4" cols="50" placeholder="Type your message here..." required></textarea>
+                </div>
+            </div>
+            <button type="submit">Contact Me</button>
+            </form>
+        </section>
+
     </main>
 
     <footer>
