@@ -1,0 +1,139 @@
+body{
+  font-family: "Google Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "GRAD" 0;
+}
+
+
+h1, h2, h3 {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+header.name {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    width: 70%;
+    max-width: 400px;
+    max-height: 50px;
+    margin: auto;
+    margin-bottom: 2rem;
+    padding: 1rem 2rem;
+    align-items: center;
+    border: 3px solid orange ;
+    border-radius: 80px;
+    backdrop-filter: blur(50px);
+    transform: translateY(10px);
+}
+
+
+.bio {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    display: auto;
+    margin: 4rem auto;
+    background-color: tan;
+    border: 1px solid #00000011;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 0 #00000011;
+}
+
+.bio img {
+    border: 10px black;
+    border-radius: 20px;
+    margin: 10px;
+    width: 150px;
+    display: flex;
+    margin: auto;
+}
+
+.bio p {
+    border: 2px black;
+    border-radius: 10px;
+    margin: 10px;
+    background-color:lightgray;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.bio-text {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bio h2 {
+   font-size: 2rem;
+   align-items: center;
+   justify-content: center;
+   margin: auto;
+   margin-bottom: 1rem;
+}
+
+
+.socials {
+    position: sticky;
+    width: 50%;
+    max-width: 500px;
+    max-height: 50px;
+    margin: auto;
+    padding: 1rem 2rem;
+    background: #00000011;
+    display: flex;
+    justify-content: space-between;;
+    align-items: center;
+    border: 1px solid orange;
+    border-radius: 50px;
+    transform: translateY(10px);
+}
+
+.links {
+    position: sticky;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-right: 1rem;
+}
+
+nav ul li a {
+    color: orange;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: #be7b0f;
+    text-decoration: 1rem;
+    text-decoration: underline;
+}
+
