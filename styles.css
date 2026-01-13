@@ -173,8 +173,8 @@ nav ul li a:hover {
 }
 
 .project-title.active {
-    background-color: orange;
-    color: white;
+    background-color: lightgray;
+    color: black;
 }
 
 .project-description {
@@ -196,13 +196,17 @@ nav ul li a:hover {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.25s ease;
-    
     font-weight: 300;
     margin: 10px;
+    display: block;
 }
 
 .project-URL:hover {
-    background-color: lightgray;
+    background-color: tan;
     color: black;
     border-radius: 5px;
+}
+
+.project-URL.active {
+    max-height: 50px;
 }

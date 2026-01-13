@@ -46,20 +46,18 @@ qaItems.forEach((qaItem) => {
 	descriptionDiv.classList.add("project-description");
 	descriptionDiv.textContent = descriptionText;
 
-	// Pulls up the elements in order on the website. (Title, URL, Description, Breaks).
+	// Pulls up the elements in order on the website. (Title, Description, URL, Breaks).
 	projectsListDiv.appendChild(titleDiv);
 
 	projectsListDiv.appendChild(descriptionDiv);
-	
+
 	projectsListDiv.appendChild(URLDiv);
-
-	
-
-	projectsListDiv.addEventListener("click", () => {
+ 
+	titleDiv.addEventListener("click", () => {
 		titleDiv.classList.toggle("active");
 		URLDiv.classList.toggle("active");
 		descriptionDiv.classList.toggle("active");
-	});
+	}); 
 
 	projectsListDiv.appendChild(br);
 
