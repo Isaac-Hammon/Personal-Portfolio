@@ -49,9 +49,17 @@ qaItems.forEach((qaItem) => {
 	// Pulls up the elements in order on the website. (Title, URL, Description, Breaks).
 	projectsListDiv.appendChild(titleDiv);
 
+	projectsListDiv.appendChild(descriptionDiv);
+	
 	projectsListDiv.appendChild(URLDiv);
 
-	projectsListDiv.appendChild(descriptionDiv);
+	
+
+	projectsListDiv.addEventListener("click", () => {
+		titleDiv.classList.toggle("active");
+		URLDiv.classList.toggle("active");
+		descriptionDiv.classList.toggle("active");
+	});
 
 	projectsListDiv.appendChild(br);
 

@@ -137,3 +137,72 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+/* Project Section */
+
+.projects {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.projects h2 {
+    margin: 0rem auto 2rem auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+.project-title {
+    background-color: tan;
+    border-radius: 10px;
+    color: black;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.project-title:hover {
+    background-color: lightgray;
+    color: black;
+}
+
+.project-title.active {
+    background-color: orange;
+    color: white;
+}
+
+.project-description {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+    background-color: tan;
+    border-radius: 5px;
+    font-weight: 300;
+    margin: 10px;
+    
+}
+
+.project-description.active {
+    max-height: 100px;
+}
+
+.project-URL {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+    
+    font-weight: 300;
+    margin: 10px;
+}
+
+.project-URL:hover {
+    background-color: lightgray;
+    color: black;
+    border-radius: 5px;
+}
