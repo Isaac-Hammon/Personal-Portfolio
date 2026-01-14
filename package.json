@@ -1,0 +1,22 @@
+{
+  "name": "personal-portfolio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Isaac-Hammon/Personal-Portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Isaac-Hammon/Personal-Portfolio/issues"
+  },
+  "homepage": "https://github.com/Isaac-Hammon/Personal-Portfolio#readme",
+  "description": "",
+  "dependencies": {
+    "vite": "^7.3.1"
+  }
+}
