@@ -92,6 +92,44 @@
             </form>
         </section>
 
+        <section id="testimonials-section">
+            <h2>References & Testimonials</h2>
+            <ul id="reference-list"></ul>
+            <h3>Add a Reference / Testimonial</h3>
+            <form id="create-reference-form">
+                <h3></h3>
+                <div class="input-group">
+                    <label for="ref-name">Name:</label>
+                    <input type="text" id="name" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="ref-email">Email:</label>
+                    <input type="email" id="email" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="ref-company">Company (optional):</label>
+                    <input type="text" id="company"  />
+                </div>
+
+                <h4>Optional Testimonial</h4>
+                <p>Please leave this section blank if you do not wish to provide a testimonial.</p>
+
+                <div class="input-group">
+                    <label for="ref-comment">Comment:</label>
+                    <textarea id="comment"></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="ref-rating">Rating 1-5:</label>
+                    <input type="number" id="rating" min="0" max="5" />
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
     </main>
 
     <footer>

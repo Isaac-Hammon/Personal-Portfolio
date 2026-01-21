@@ -64,3 +64,225 @@ qaItems.forEach((qaItem) => {
 	projectsListDiv.appendChild(br2);
 
 });
+
+
+class DatabaseObject {
+	toString() {
+		throw new Error("Not implemented");
+	}
+}
+
+
+//Reference Data Access Object (DAO)
+class ReferenceDAO extends DatabaseObject {
+
+	constructor({ id, name, email, company }) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.company = company;
+	}
+
+	static seeds = [
+		{
+			id: 1,
+			name: "Capt. John Price",
+			email: "N/A",
+			company: "British Special Air Service (SAS)"
+		},
+		{
+			id: 2, 
+			name: "Eddard 'Ned' Stark", 
+			email: "N/A",
+			company: "House Stark (Lord of Winterfell and Warden of the North)"
+		},
+		{
+			id: 3, 
+			name: "Thorin Oakenshield",
+			email: "N/A", 
+			company: "The King Under the Mountain"
+		}
+	]
+}
+
+//Testimonial Data Access Object (DAO)
+class TestimonialDAO extends DatabaseObject {
+
+	constructor({ id, comment, rating, referenceId }) {
+		super();
+		this.id = id;
+		this.comment = comment;
+		this.rating = rating;
+		this.referenceId = referenceId;
+	}
+
+	static seeds = [
+		{
+			id: 1, 
+			comment: "Isaac Hammon is an exceptional team player and a natural leader. His ability to strategize and execute complex missions under pressure is unparalleled. I'd give him five stars, but I'm the best there is.",
+			rating: 4.9,
+			referenceId: 1
+		}, 
+		{
+			id: 2, 
+			comment: "Ser Isaac Hammon has proven himself time and again to be a loyal and honorable knight to House Stark. Through his many years of service to myself, my family and the people of the North, I have granted him with the title of Ser. I would trust him with my life and the lives of my family.",
+			rating: 5.0,
+			referenceId: 2
+		},
+		{
+			id: 3, 
+			comment: "Isaac Hammon is a brave and skilled warrior. He has fought alongside me in many battles and has always shown great courage and determination on the field. I would traverse through Mordor itself with him by my side.",
+			rating: 5.0, 
+			referenceId: 3
+		}
+	]
+}
+
+//Local Storage Reference DAO Implementation
+class LocalStorageReferenceDAO extends ReferenceDAO {
+	constructor() {
+		super();
+		this.database = localStorage;
+	}
+
+	getAll() {
+		const json = this.database.getItem("references");
+		const data = json ? JSON.parse(json) : ReferenceDAO.seeds;
+		return data.map((r) => new ReferenceDAO(r));
+	}
+
+	create(reference) {
+		const references = this.getAll();
+		references.push(reference);
+		this.database.setItem("references", JSON.stringify(references));
+	}
+}
+
+//Local Storage Testimonial DAO Implementation
+class LocalStorageTestimonialDAO extends TestimonialDAO {
+	constructor() {
+		super();
+		this.database = localStorage;
+	}
+	getAll() {
+		const json = this.database.getItem("testimonials");
+		const data = json ? JSON.parse(json) : TestimonialDAO.seeds;
+		return data.map((t) => new TestimonialDAO(t));
+	}
+
+	getByReferenceId(referenceId) {
+		return this.getAll().filter(t => t.referenceId === referenceId);
+	}
+
+	create(testimonial) {
+		const testimonials = this.getAll();
+		testimonials.push(testimonial);
+		this.database.setItem("testimonials", JSON.stringify(testimonials));
+	}
+}
+
+//Cookie Storage Reference DAO Implementation
+class CookieReferenceDAO extends ReferenceDAO {
+	getAll() {
+		const cookie = document.cookie
+			.split("; ")
+			.find((c) => c.startsWith("references="))
+			?.split("=")[1];
+
+		const data = cookie ? JSON.parse(cookie) : ReferenceDAO.seeds;
+		return data.map((r) => new ReferenceDAO(r));
+	}
+
+	create(reference) {
+		const references = this.getAll();
+		references.push(reference);
+		document.cookie = `references=${JSON.stringify(references)}; max-age=30;`
+	}
+}
+
+class CookieTestimonialDAO extends TestimonialDAO {
+	getAll() {
+		const cookie = document.cookie
+			.split("; ")
+			.find((c) => c.startsWith("testimonials="))
+			?.split("=")[1];
+
+		const data = cookie ? JSON.parse(cookie) : TestimonialDAO.seeds;
+		return data.map((t) => new TestimonialDAO(t));
+	}
+
+	create(testimonial) {
+		const testimonials = this.getAll();
+		testimonials.push(testimonial);
+		document.cookie = `testimonials=${JSON.stringify(testimonials)}; max-age=30;`
+	}
+}
+
+class TestimonialService {
+	constructor(referenceDAO, testimonialDAO) {
+		this.referenceDAO = referenceDAO;
+		this.testimonialDAO = testimonialDAO;
+	}
+
+	createReferenceWithOptionalTestimonial(referenceData, testimonialData = null) {
+		const reference = new ReferenceDAO(referenceData);
+		this.referenceDAO.create(reference);
+		if (testimonialData) {
+			const testimonial = new TestimonialDAO(testimonialData);
+			this.testimonialDAO.create(testimonial);
+		}
+	
+}
+}
+
+const referenceList = document.getElementById("reference-list");
+const references = referenceDAO.getAll();
+for (let i = 0; i < references.length; i++) {
+	const reference = references[i];
+	const referenceLi = document.createElement("li");
+	referenceLi.textContent = reference.toString();
+	referenceList.appendChild(referenceLi);
+}
+
+
+const referenceDAO = new LocalStorageReferenceDAO();
+const testimonialDAO = new LocalStorageTestimonialDAO();
+const testimonialService = new TestimonialService(referenceDAO, testimonialDAO);
+
+// Function to calculate and update average rating
+
+const testimonials = testimonialDAO.getAll();
+
+
+const average = testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length;
+
+document.querySelector("h3").textContent = `Average Rating: ${average.toFixed(1)}`;
+
+
+
+const form = document.getElementById("create-reference-form");
+form.addEventListener("submit", (event) => {
+	event.preventDefault();
+	const formData = new FormData(form);
+	const referenceData = {
+		id: Date.now(),
+		name: formData.get("name"),
+		email: formData.get("email"),
+		company: formData.get("company") || null,
+	};
+	const comment = formData.get("comment");
+	const rating = formData.get("rating");
+	let testimonialData = null;
+	if (comment && rating) {
+		testimonialData = {
+			id: Date.now(),
+			comment: comment,
+			rating: Number(rating),
+			
+		};
+	}
+	testimonialService.createReferenceWithOptionalTestimonial(referenceData, testimonialData);
+	updateAverageRating();
+	form.reset();
+});

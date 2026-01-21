@@ -8,13 +8,13 @@ body{
 }
 
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
   font-variation-settings:
-    "wdth" 100;
+    "width" 100;
 }
 
 header.name {
@@ -44,13 +44,13 @@ header.name {
     display: auto;
     margin: 4rem auto;
     background-color: tan;
-    border: 1px solid #00000011;
+    border: 10px solid #00000011;
     border-radius: 15px;
     box-shadow: 0 0 10px 0 #00000011;
 }
 
 .bio img {
-    border: 10px black;
+    border: 5px solid black;
     border-radius: 20px;
     margin: 10px;
     width: 150px;
@@ -59,7 +59,7 @@ header.name {
 }
 
 .bio p {
-    border: 2px black;
+    border: 3px solid black;
     border-radius: 10px;
     margin: 10px;
     background-color:lightgray;
@@ -210,3 +210,15 @@ nav ul li a:hover {
 .project-URL.active {
     max-height: 50px;
 }
+
+
+/* Contact Form Section */
+
+.input-row {
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+    font-weight: 300;
+    margin: 10px;
+    display: block;
+} 
+  
