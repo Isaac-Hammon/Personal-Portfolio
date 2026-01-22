@@ -14,23 +14,30 @@
 
 <body>
     <main>
-        <header class="name">
-            <h1>Isaac Hammon's Portfolio</h1>
-            </header>
-        <section id="header">
-            <div class="socials">
-                <h2>Social Links</h2>
-                <div class="links">
-                <nav>
-                <ul>
-                <li><a href="https://github.com/Isaac-Hammon" target="_blank">Github Profile</a></li>
-                <li><a href="https://www.linkedin.com/in/isaac-hammon-790349345/" target="_blank">LinkedIn Profile</a>
+   <header class="name">
+    <h1>Isaac Hammon's Portfolio</h1>
+</header>
+
+<section id="social-links">
+    <div class="socials">
+        <h2>Social Links</h2>
+        <nav class="links">
+            <ul>
+                <li>
+                    <a href="https://github.com/Isaac-Hammon" target="_blank" rel="noopener noreferrer">
+                        GitHub Profile
+                    </a>
                 </li>
-                </ul>
-            </nav>
-                </div>
-            </div>
-        </section>
+                <li>
+                    <a href="https://www.linkedin.com/in/isaac-hammon-790349345/" target="_blank" rel="noopener noreferrer">
+                        LinkedIn Profile
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
 
         <section>
                 <div class="bio">
@@ -57,7 +64,7 @@
 
         <section>
             <blockquote>
-            <h3>If you would like to contact me, please fill out the form below:</h3>
+            <h2>If you would like to contact me, please fill out the form below:</h2>
             </blockquote>
 
             <form method="POST">
@@ -92,43 +99,57 @@
             </form>
         </section>
 
-        <section id="testimonials-section">
-            <h2>References & Testimonials</h2>
-            <ul id="reference-list"></ul>
-            <h3>Add a Reference / Testimonial</h3>
-            <form id="create-reference-form">
-                <h3></h3>
-                <div class="input-group">
-                    <label for="ref-name">Name:</label>
-                    <input type="text" id="name" required />
-                </div>
+  <section id="testimonials-section">
+  <h2>References & Testimonials</h2>
 
-                <div class="input-group">
-                    <label for="ref-email">Email:</label>
-                    <input type="email" id="email" required />
-                </div>
+  <h3 id="average-rating">Average Rating:</h3>
 
-                <div class="input-group">
-                    <label for="ref-company">Company (optional):</label>
-                    <input type="text" id="company"  />
-                </div>
+  <ul id="reference-list"></ul>
 
-                <h4>Optional Testimonial</h4>
-                <p>Please leave this section blank if you do not wish to provide a testimonial.</p>
+  <h3>Add a Reference / Testimonial</h3>
+  <form id="create-reference-form">
+    <div class="input-group">
+      <label >Name:
+        <input type="text" id="ref-name" name="name" required />
+      </label>
+      
+    </div>
 
-                <div class="input-group">
-                    <label for="ref-comment">Comment:</label>
-                    <textarea id="comment"></textarea>
-                </div>
+    <div class="input-group">
+      <label >Email:
+         <input type="email" id="ref-email" name="email" required />
+      </label>
+     
+    </div>
 
-                <div class="input-group">
-                    <label for="ref-rating">Rating 1-5:</label>
-                    <input type="number" id="rating" min="0" max="5" />
-                </div>
+    <div class="input-group">
+      <label >Company (optional):
+        <input type="text" id="ref-company" name="company" />
+      </label>
+      
+    </div>
 
-                <button type="submit">Submit</button>
-            </form>
-        </section>
+    <h4>Optional Testimonial</h4>
+    <p>Please leave this section blank if you do not wish to provide a testimonial.</p>
+
+    <div class="input-group">
+      <label >Comment:
+        <textarea id="ref-comment" name="comment"></textarea>
+      </label>
+      
+    </div>
+
+    <div class="input-group">
+      <label >Rating 1-5:
+         <input type="number" id="ref-rating" name="rating" min="1" max="5" step="0.1" />
+      </label>
+     
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
 
     </main>
 
