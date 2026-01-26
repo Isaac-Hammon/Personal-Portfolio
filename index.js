@@ -194,13 +194,6 @@ create(reference) {
 	refs.push(reference);
 	this.database.setItem("references", JSON.stringify(refs));
 }
-
-// update(reference) {
-// const existingReferences = this.getAll();
-// const indexToDelete = existingReferences.findIndex((referenceInList) => referencetInList.name == reference.name); 
-// existingReferences.splice(indexToDelete, 1, product);
-// this.database.setItem("references", JSON.stringify(existingReferences));
-// }
 }
 
 //Cookie Storage Reference Dao Class
@@ -296,8 +289,7 @@ class CreateTestimonial {
 	}
 }
 
-// const referenceDao = new SessionStorageReferenceDao();
-// const testimonialDao = new SessionStorageTestimonialDao();
+
 
 //Cookies
 const referenceDao = new CookieStorageReferenceDao();
@@ -320,7 +312,6 @@ if (testimonials.length === 0) {
 }
 
 
-// document.getElementById("average-rating").textContent = `Average Rating: ${average.toFixed(1)}`;
 
 //Form Submission
 const form = document.getElementById("create-reference-form");
@@ -355,7 +346,7 @@ form.addEventListener("submit", (event) => {
 
 const referenceList = document.getElementById("reference-list");
 const references = referenceDao.getAll();
-// const testimonials = testimonialDao.getAll();
+
 for(let i = 0; i < references.length; i++) {
 	const reference = references[i];
 
@@ -366,7 +357,7 @@ for(let i = 0; i < references.length; i++) {
     (t) => t.referenceId === reference.id);
 
 	  if (relatedTestimonials.length > 0) {
-    const testimonial = relatedTestimonials[0]; // show just one (simplest)
+    const testimonial = relatedTestimonials[0]; 
     const testimonialP = document.createElement("p");
     testimonialP.textContent = testimonial.toString();
     referenceLi.appendChild(testimonialP);
@@ -376,177 +367,3 @@ for(let i = 0; i < references.length; i++) {
 }
 
 
-
-// const createDeliveryForm = document.querySelector("#deliveries form");
-// createDeliveryForm.addEventListener("submit", (event) => {
-// 		// event.preventDefault();
-// const formData = new FormData(event.target);
-// const address = formData.get("address");
-// const scheduleTime = formData.get("scheduledTime");
-// const productName = formData.get("productName");
-// const quantity = formData.get("quantity");
-
-// createDeliveryService.createDelivery(productName, quantity, address, scheduleTime);
-// });
-
-
-
-//Local Storage Reference Dao Implementation
-// class LocalStorageReferenceDao extends ReferenceDao {
-// 	constructor() {
-// 		super();
-// 		this.database = localStorage;
-// 	}
-
-// 	getAll() {
-// 		const json = this.database.getItem("references");
-// 		const data = json ? JSON.parse(json) : ReferenceDao.seeds;
-// 		return data.map((r) => new ReferenceDao(r));
-// 	}
-
-// 	create(reference) {
-// 		const references = this.getAll();
-// 		references.push(reference);
-// 		this.database.setItem("references", JSON.stringify(references));
-// 	}
-// }
-
-// //Local Storage Testimonial Dao Implementation
-// class LocalStorageTestimonialDao extends TestimonialDao {
-// 	constructor() {
-// 		super();
-// 		this.database = localStorage;
-// 	}
-// 	getAll() {
-// 		const json = this.database.getItem("testimonials");
-// 		const data = json ? JSON.parse(json) : TestimonialDao.seeds;
-// 		return data.map((t) => new TestimonialDao(t));
-// 	}
-
-// 	getByReferenceId(referenceId) {
-// 		return this.getAll().filter(t => t.referenceId === referenceId);
-// 	}
-
-// 	create(testimonial) {
-// 		const testimonials = this.getAll();
-// 		testimonials.push(testimonial);
-// 		this.database.setItem("testimonials", JSON.stringify(testimonials));
-// 	}
-// }
-
-// //Cookie Storage Reference Dao Implementation
-// class CookieReferenceDao extends ReferenceDao {
-// 	getAll() {
-// 		const cookie = document.cookie
-// 			.split("; ")
-// 			.find((c) => c.startsWith("references="))
-// 			?.split("=")[1];
-
-// 		const data = cookie ? JSON.parse(cookie) : ReferenceDao.seeds;
-// 		return data.map((r) => new ReferenceDao(r));
-// 	}
-
-// 	create(reference) {
-// 		const references = this.getAll();
-// 		references.push(reference);
-// 		document.cookie = `references=${JSON.stringify(references)}; max-age=30;`
-// 	}
-// }
-
-// class CookieTestimonialDao extends TestimonialDao {
-// 	getAll() {
-// 		const cookie = document.cookie
-// 			.split("; ")
-// 			.find((c) => c.startsWith("testimonials="))
-// 			?.split("=")[1];
-
-// 		const data = cookie ? JSON.parse(cookie) : TestimonialDao.seeds;
-// 		return data.map((t) => new TestimonialDao(t));
-// 	}
-
-// 	create(testimonial) {
-// 		const testimonials = this.getAll();
-// 		testimonials.push(testimonial);
-// 		document.cookie = `testimonials=${JSON.stringify(testimonials)}; max-age=30;`
-// 	}
-// }
-
-// class TestimonialService {
-// 	constructor(referenceDao, testimonialao) {
-// 		this.referenceDao = referenceDao;
-// 		this.testimonialDao = testimonialDao;
-// 	}
-
-// 	createReferenceWithOptionalTestimonial(referenceData, testimonialData = null) {
-// 		const reference = new ReferenceDao(referenceData);
-// 		this.referenceDao.create(reference);
-// 		if (testimonialData) {
-// 			const testimonial = new TestimonialDao(testimonialData);
-// 			this.testimonialDao.create(testimonial);
-// 		}
-	
-// }
-// }
-
-
-
-
-// const referenceDao = new LocalStorageReferenceDao();
-// const testimonialDao = new LocalStorageTestimonialDao();
-// const testimonialService = new TestimonialService(referenceDao, testimonialDao);
-
-
-
-// const testimonials = testimonialDao.getAll();
-
-// const form = document.getElementById("create-reference-form");
-// form.addEventListener("submit", (event) => {
-// 	event.preventDefault();
-// 	const formData = new FormData(form);
-// 	const referenceData = {
-// 		id: Date.now(),
-// 		name: formData.get("name"),
-// 		email: formData.get("email"),
-// 		company: formData.get("company") || null,
-// 	};
-// 	const comment = formData.get("comment");
-// 	const rating = formData.get("rating");
-// 	let testimonialData = null;
-// 	if (comment && rating) {
-// 		testimonialData = {
-// 			id: Date.now(),
-// 			comment: comment,
-// 			rating: Number(rating),
-			
-// 		};
-// 	}
-// 	testimonialService.createReferenceWithOptionalTestimonial(referenceData, testimonialData);
-// 	updateAverageRating();
-// 	form.reset();
-// });
-
-// function updateAverageRating() {
-//   const testimonials = testimonialDao.getAll();
-//   const h3 = document.getElementById("average-rating"); // recommended (see #3)
-
-//   if (!testimonials.length) {
-//     h3.textContent = "Average Rating: N/A";
-//     return;
-//   }
-
-//   const average =
-//     testimonials.reduce((sum, t) => sum + Number(t.rating || 0), 0) / testimonials.length;
-
-//   h3.textContent = `Average Rating: ${average.toFixed(1)}`;
-// }
-
-
-// //Reference List
-// const referenceList = document.getElementById("reference-list");
-// const references = referenceDao.getAll();
-// for (let i = 0; i < references.length; i++) {
-// 	const reference = references[i];
-// 	const referenceLi = document.createElement("li");
-// 	referenceLi.textContent = reference.toString();
-// 	referenceList.appendChild(referenceLi);
-// }
