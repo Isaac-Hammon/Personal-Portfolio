@@ -285,6 +285,7 @@ input:focus, select:focus, textarea:focus {
     transform: translateY(2px);
 }
 
+
 /* Testimonials Section */
 #testimonials-section {
     max-width: 800px;
@@ -332,6 +333,13 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+#reference-list ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+
 #create-reference-form {
     margin-top: 2rem;
     display: flex;
@@ -361,6 +369,54 @@ input:focus, select:focus, textarea:focus {
 #testimonials-section p {
     font-size: 0.9rem;
     color: #444;
+}
+
+/* Add Reference/Testimonial Form */
+#create-reference-form {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #d1d5db;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+#testimonials-section h3 {
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+#create-reference-form h4 {
+    margin-top: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+#create-reference-form p {
+    margin: 0 0 1rem;
+    padding: 0.75rem 1rem;
+    background: #f3f4f6;
+    border-left: 4px solid #0077cc;
+    color: #444;
+}
+
+#create-reference-form .input-group label {
+    margin-bottom: 0.4rem;
+}
+
+#create-reference-form textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+#create-reference-form .primary-button {
+    margin-top: 0.5rem;
+    align-self: center;
 }
 
 /* Footer Section */

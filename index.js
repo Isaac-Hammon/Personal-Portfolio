@@ -122,13 +122,13 @@ class ReferenceDao {
 			id: 2, 
 			name: "Eddard 'Ned' Stark", 
 			email: "N/A",
-			company: "House Stark (Lord of Winterfell and Warden of the North)"
+			company: "House Stark (Lord of Winterfell, Warden of the North, and Hand of the King.)"
 		},
 		{
 			id: 3, 
 			name: "Thorin Oakenshield",
 			email: "N/A", 
-			company: "The King Under the Mountain"
+			company: "Erebor (The King under the Mountain, and leader of Durin's Folk.)"
 		},
 	];
 
@@ -144,6 +144,9 @@ class ReferenceDao {
 
 }
 
+
+
+// Testiomnial Dao Class
 class TestimonialDao {
 		static seeds = [
 		{
@@ -222,7 +225,7 @@ class CookieStorageReferenceDao extends ReferenceDao {
 
 }
 
-
+// Updates References
 update(reference) {
 const existingReferences = this.getAll();
 const indexToDelete = existingReferences.findIndex(
@@ -318,49 +321,84 @@ const form = document.getElementById("create-reference-form");
 
 
 form.addEventListener("submit", (event) => {
-	event.preventDefault();
-	const formData = new FormData(form);
-	const referenceData = {
-		id: Date.now(),
-		name: formData.get("name"),
-		email: formData.get("email"),
-		company: formData.get("company") || null,
-		
-	};
-	const comment = formData.get("comment");
-	const rating = formData.get("rating")
+  event.preventDefault();
 
-	let testimonialData = null;
+  const formData = new FormData(form);
 
-	if (comment && rating) {
-		testimonialData = {
-			id: Date.now(), 
-			comment,
-			rating: Number(rating),
-		};
-	}
+  const referenceData = {
+    id: Date.now(),
+    name: formData.get("name"),
+    email: formData.get("email"),
+    company: formData.get("company") || null,
+  };
 
-	CreateTestimonialService.createReferencewithOptionalTestimonial(referenceData, testimonialData,);
-	form.reset();
+  const comment = formData.get("comment");
+  const rating = Number(formData.get("rating"));
+
+  if (rating && (rating < 1 || rating > 5)) {
+    alert("Rating must be between 1 and 5.");
+    return;
+  }
+
+  let testimonialData = null;
+
+  if (comment && rating) {
+    testimonialData = {
+      id: Date.now(),
+      comment,
+      rating,
+    };
+  }
+
+  CreateTestimonialService.createReferencewithOptionalTestimonial(
+    referenceData,
+    testimonialData
+  );
+
+  form.reset();
 });
+
+
 
 const referenceList = document.getElementById("reference-list");
 const references = referenceDao.getAll();
 
-for(let i = 0; i < references.length; i++) {
-	const reference = references[i];
+for (let i = 0; i < references.length; i++) {
+  const reference = references[i];
 
-	const referenceLi = document.createElement("li");
-	referenceLi.textContent = reference.toString();
+  const referenceLi = document.createElement("li");
 
-	 const relatedTestimonials = testimonials.filter(
-    (t) => t.referenceId === reference.id);
+  const detailsUl = document.createElement("ul");
 
-	  if (relatedTestimonials.length > 0) {
-    const testimonial = relatedTestimonials[0]; 
-    const testimonialP = document.createElement("p");
-    testimonialP.textContent = testimonial.toString();
-    referenceLi.appendChild(testimonialP);
+  // Name
+  const nameLi = document.createElement("li");
+  nameLi.textContent = "Name: " + reference.name;
+
+  // Email
+  const emailLi = document.createElement("li");
+  emailLi.textContent = "Email: " + reference.email;
+
+  // Company
+  const companyLi = document.createElement("li");
+  companyLi.textContent = "Company: " + reference.company;
+
+  detailsUl.appendChild(nameLi);
+  detailsUl.appendChild(emailLi);
+  detailsUl.appendChild(companyLi);
+
+  referenceLi.appendChild(detailsUl);
+
+  const relatedTestimonials = testimonials.filter(
+    (t) => t.referenceId === reference.id
+  );
+
+  if (relatedTestimonials.length > 0) {
+    const testimonial = relatedTestimonials[0];
+    const testimonialLi = document.createElement("li");
+    testimonialLi.textContent =
+      "Testimonial: " + testimonial.comment + " (" + testimonial.rating + ")";
+
+    detailsUl.appendChild(testimonialLi);
   }
 
   referenceList.appendChild(referenceLi);
