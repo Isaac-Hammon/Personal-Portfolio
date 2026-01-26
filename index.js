@@ -228,7 +228,6 @@ class CookieStorageReferenceDao extends ReferenceDao {
     )}; max-age=30`;
   }
 
-  // Updates References
   update(reference) {
     const existingReferences = this.getAll();
 
