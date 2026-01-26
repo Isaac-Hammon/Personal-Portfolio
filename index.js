@@ -201,39 +201,49 @@ create(reference) {
 
 //Cookie Storage Reference Dao Class
 class CookieStorageReferenceDao extends ReferenceDao {
-	constructor(){
-		super();
-		this.database = document.cookie;
-	}
-	getAll() {
-	const cookieValue = document.cookie
-	.split("; ")
-	.find((row) => row.startsWith("references="))
-	?.split("=")[1];
+  constructor() {
+    super();
+    this.database = document.cookie;
+  }
 
-	const referencesData = cookieValue ? JSON.parse(cookieValue) : ReferenceDao.seeds;
+  getAll() {
+    const cookieValue = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("references="))
+      ?.split("=")[1];
 
-	return referencesData.map((referenceData) => new Reference(referenceData));
+    const referencesData = cookieValue
+      ? JSON.parse(decodeURIComponent(cookieValue))
+      : ReferenceDao.seeds;
 
-		
-	}
+    return referencesData.map((referenceData) => new Reference(referenceData));
+  }
 
-	create(reference) {
-  const existingReferences = this.getAll();
-  existingReferences.push(reference);
-  document.cookie = `references=${encodeURIComponent(JSON.stringify(existingReferences))}; max-age=30`;
+  create(reference) {
+    const existingReferences = this.getAll();
+    existingReferences.push(reference);
 
+    document.cookie = `references=${encodeURIComponent(
+      JSON.stringify(existingReferences)
+    )}; max-age=30`;
+  }
+
+  // Updates References
+  update(reference) {
+    const existingReferences = this.getAll();
+
+    const indexToDelete = existingReferences.findIndex(
+      (referenceInList) => referenceInList.name == reference.name
+    );
+
+    existingReferences.splice(indexToDelete, 1, reference);
+
+    document.cookie = `references=${encodeURIComponent(
+      JSON.stringify(existingReferences)
+    )}; max-age=30`;
+  }
 }
 
-// Updates References
-update(reference) {
-const existingReferences = this.getAll();
-const indexToDelete = existingReferences.findIndex(
-	(referenceInList) => referenceInList.name == reference.name,); 
-existingReferences.splice(indexToDelete, 1, reference);
-document.cookie = `references=${JSON.stringify(existingReferences)}; max-age=30`;
-}
-}
 
 
 //Session Storage Testimonial Dao Class
@@ -292,11 +302,12 @@ class CreateTestimonial {
 	}
 }
 
-//Session
+// Switch between commenting each out to check for functionality on whether the input information is being saved to the Session or Cookies. 
+//Session Storage
 const referenceDao = new SessionStorageReferenceDao();
 const testimonialDao = new SessionStorageTestimonialDao();
 
-//Cookies
+//Cookie Storage 
 // const referenceDao = new CookieStorageReferenceDao();
 // const testimonialDao = new CookieStorageTestimonialDao();
 
