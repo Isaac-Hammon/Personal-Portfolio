@@ -4,152 +4,234 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet" />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+        rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="styles.css" />
+
     <title>Isaac Hammon's Personal Portfolio</title>
+
     <script src="index.js" defer></script>
 </head>
 
 <body>
     <main>
-   <header class="name">
-    <h1>Isaac Hammon's Portfolio</h1>
-</header>
+        <!-- Header Section -->
+        <header class="name">
+            <h1>Isaac Hammon's Portfolio</h1>
+        </header>
 
-<section id="social-links">
-    <div class="socials">
-        <h2>Social Links</h2>
-        <nav class="links">
-            <ul>
-                <li>
-                    <a href="https://github.com/Isaac-Hammon" target="_blank" rel="noopener noreferrer">
-                        GitHub Profile
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/in/isaac-hammon-790349345/" target="_blank" rel="noopener noreferrer">
-                        LinkedIn Profile
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</section>
+        <!-- Social Links Section -->
+        <section id="social-links">
+            <div class="socials">
+                <h2>Social Links</h2>
 
+                <nav class="links">
+                    <ul>
+                        <li>
+                            <a
+                                href="https://github.com/Isaac-Hammon"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                GitHub Profile
+                            </a>
+                        </li>
 
-        <section>
-                <div class="bio">
-                <div class="bio-text">
-                <h2>Isaac Hammon</h2>
-                <img src="images/profile-1.jpg" alt="Isaac Hammon" height="200px" width="150px" />
-                <p>Hello! My name is Isaac Hammon, and I am an aspiring software engineer with a strong
-                    interest in building web applications and learning modern technologies. I enjoy
-                    problem-solving, continuous learning, and collaborating with others to create
-                    impactful software solutions. My goal is to grow as a developer and contribute
-                    to meaningful projects in the tech industry.</p>
-                </div>
-                </div>
+                        <li>
+                            <a
+                                href="https://www.linkedin.com/in/isaac-hammon-790349345/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                LinkedIn Profile
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </section>
 
+        <!-- Bio Section -->
+        <section>
+            <div class="bio">
+                <div class="bio-text">
+                    <h2>Isaac Hammon</h2>
+
+                    <img
+                        src="images/profile-1.jpg"
+                        alt="Isaac Hammon"
+                        height="200px"
+                        width="150px"
+                    />
+
+                    <p>
+                        Hello! My name is Isaac Hammon, and I am an aspiring software engineer
+                        with a strong interest in building web applications and learning modern
+                        technologies. I enjoy problem-solving, continuous learning, and
+                        collaborating with others to create impactful software solutions.
+                        My goal is to grow as a developer and contribute to meaningful projects
+                        in the tech industry.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
         <section>
             <div class="projects">
                 <div class="card">
-                <h2>Projects</h2>
-                <div id="project"></div>
+                    <h2>Projects</h2>
+                    <div id="project"></div>
                 </div>
             </div>
         </section>
 
+        <!-- Contact Form Section -->
         <section>
             <blockquote>
-            <h2>If you would like to contact me, please fill out the form below:</h2>
+                <h2>If you would like to contact me, please fill out the form below:</h2>
             </blockquote>
 
             <form method="POST">
-            <div class="input-row"></div>
+                <div class="input-row"></div>
+
                 <div class="input-group">
                     <label id="first-name">First Name:</label>
-                    <input name="first-name" type="text" placeholder="Enter your first name" required />
+                    <input
+                        name="first-name"
+                        type="text"
+                        placeholder="Enter your first name"
+                        required
+                    />
                 </div>
+
                 <div class="input-group">
                     <label for="last-name">Last Name:</label>
-                    <input name="last-name" type="text" placeholder="Enter your last name" required />
+                    <input
+                        name="last-name"
+                        type="text"
+                        placeholder="Enter your last name"
+                        required
+                    />
                 </div>
+
                 <div class="input-group">
                     <label id="email">Email:</label>
-                    <input name="email" type="email" placeholder="Enter your email" required />
+                    <input
+                        name="email"
+                        type="email"
+                        placeholder="Enter your email"
+                        required
+                    />
                 </div>
-            <div class="input-row">
-                <div class="input-group">
-                    <label for="message">Select Message Type:</label>
-                    <select id="message">
-                        <option value="inquiry">Business Inquiry</option>
-                        <option value="feedback">Feedback</option>
-                        <option value="question">General Question</option>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-                    </select>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="message">Select Message Type:</label>
+                        <select id="message">
+                            <option value="inquiry">Business Inquiry</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="question">General Question</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="message-content">Message:</label>
+                        <textarea
+                            id="message-content"
+                            rows="4"
+                            cols="50"
+                            placeholder="Type your message here..."
+                            required
+                        ></textarea>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label for="message-content">Message:</label>
-                    <textarea id="message-content" rows="4" cols="50" placeholder="Type your message here..." required></textarea>
-                </div>
-            </div>
-            <button type="submit" class="primary-button">Contact Me</button>
+
+                <button type="submit" class="primary-button">Contact Me</button>
             </form>
         </section>
 
-  <section id="testimonials-section">
-  <h2>References & Testimonials</h2>
+        <!-- Testimonials Section -->
+        <section id="testimonials-section">
+            <h2>References & Testimonials</h2>
 
-  <h3 id="average-rating">Average Rating:</h3>
+            <h3 id="average-rating">Average Rating:</h3>
 
-  <ul id="reference-list"></ul>
+            <ul id="reference-list"></ul>
 
-  <h3>Add a Reference / Testimonial</h3>
-  <form id="create-reference-form">
-    <div class="input-group">
-      <label for="ref-name">Name</label>
-    <input type="text" id="ref-name" name="name" required />
+            <h3>Add a Reference / Testimonial</h3>
 
-    </div>
+            <form id="create-reference-form">
+                <div class="input-group">
+                    <label for="ref-name">Name</label>
+                    <input
+                        type="text"
+                        id="ref-name"
+                        name="name"
+                        required
+                    />
+                </div>
 
-    <div class="input-group">
-      <label >Email:
-         <input type="email" id="ref-email" name="email" required />
-      </label>
-     
-    </div>
+                <div class="input-group">
+                    <label>
+                        Email:
+                        <input
+                            type="email"
+                            id="ref-email"
+                            name="email"
+                            required
+                        />
+                    </label>
+                </div>
 
-    <div class="input-group">
-      <label >Company (optional):
-        <input type="text" id="ref-company" name="company" />
-      </label>
-      
-    </div>
+                <div class="input-group">
+                    <label>
+                        Company (optional):
+                        <input
+                            type="text"
+                            id="ref-company"
+                            name="company"
+                        />
+                    </label>
+                </div>
 
-    <h4>Optional Testimonial</h4>
-    <p>Please leave this section blank if you do not wish to provide a testimonial.</p>
+                <h4>Optional Testimonial</h4>
+                <p>Please leave the section below blank if you do not wish to provide a testimonial.</p>
 
-    <div class="input-group">
-      <label >Comment:
-        <textarea id="ref-comment" name="comment"></textarea>
-      </label>
-      
-    </div>
+                <div class="input-group">
+                    <label>
+                        Comment:
+                        <textarea
+                            id="ref-comment"
+                            name="comment"
+                        ></textarea>
+                    </label>
+                </div>
 
-    <div class="input-group">
-      <label >Rating 1-5:
-         <input type="number" id="ref-rating" name="rating" min="1" max="5" step="0.1" />
-      </label>
-     
-    </div>
+                <div class="input-group">
+                    <label>
+                        Rating 1-5:
+                        <input
+                            type="number"
+                            id="ref-rating"
+                            name="rating"
+                            min="1"
+                            max="5"
+                            step="0.5"
+                        />
+                    </label>
+                </div>
 
-    <button type="submit" class="primary-button">Submit</button>
-  </form>
-</section>
-
-
+                <button type="submit" class="primary-button">Submit</button>
+            </form>
+        </section>
     </main>
 
     <footer>

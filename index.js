@@ -292,11 +292,13 @@ class CreateTestimonial {
 	}
 }
 
-
+//Session
+const referenceDao = new SessionStorageReferenceDao();
+const testimonialDao = new SessionStorageTestimonialDao();
 
 //Cookies
-const referenceDao = new CookieStorageReferenceDao();
-const testimonialDao = new CookieStorageTestimonialDao();
+// const referenceDao = new CookieStorageReferenceDao();
+// const testimonialDao = new CookieStorageTestimonialDao();
 
 const CreateTestimonialService = new CreateTestimonial(referenceDao, testimonialDao);
 
