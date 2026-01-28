@@ -18,5 +18,8 @@
   "description": "",
   "dependencies": {
     "vite": "^7.3.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
   }
 }

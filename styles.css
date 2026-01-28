@@ -95,7 +95,7 @@ header.name {
     padding: 1rem 2rem;
     background: #00000011;
     display: flex;
-    justify-content: space-between;;
+    justify-content: space-between;
     align-items: center;
     border: 1px solid orange;
     border-radius: 50px;
@@ -210,6 +210,23 @@ nav ul li a:hover {
 .project-URL.active {
     max-height: 50px;
 }
+
+.additional-projects {
+    margin: 2rem auto;
+    text-align: center;
+    align-items: center;
+}
+
+.link {
+    position: sticky;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 
 /* Contact Form Section */
