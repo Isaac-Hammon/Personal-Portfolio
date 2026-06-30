@@ -10,8 +10,7 @@
 
     <link
         href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
-        rel="stylesheet"
-    />
+        rel="stylesheet" />
 
     <link rel="stylesheet" href="styles.css" />
 
@@ -35,21 +34,14 @@
                 <nav class="links">
                     <ul>
                         <li>
-                            <a
-                                href="https://github.com/Isaac-Hammon"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
+                            <a href="https://github.com/Isaac-Hammon" target="_blank" rel="noopener noreferrer">
                                 GitHub Profile
                             </a>
                         </li>
 
                         <li>
-                            <a
-                                href="https://www.linkedin.com/in/isaac-hammon-790349345/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
+                            <a href="https://www.linkedin.com/in/isaac-hammon-790349345/" target="_blank"
+                                rel="noopener noreferrer">
                                 LinkedIn Profile
                             </a>
                         </li>
@@ -64,12 +56,7 @@
                 <div class="bio-text">
                     <h2>Isaac Hammon</h2>
 
-                    <img
-                        src="images/profile-1.jpg"
-                        alt="Isaac Hammon"
-                        height="200px"
-                        width="150px"
-                    />
+                    <img src="images/profile-1.jpg" alt="Isaac Hammon" height="200px" width="150px" />
 
                     <p>
                         Hello! My name is Isaac Hammon, and I am an aspiring software engineer
@@ -94,7 +81,7 @@
         </section>
 
         <!-- Additional Projects Section-->
-         <section>
+        <section>
             <div class="additional-projects">
                 <div class="card">
                     <h2>Additional Projects</h2>
@@ -106,72 +93,8 @@
                     </nav>
                 </div>
             </div>
-         </section>
-
-        <!-- Contact Form Section -->
-        <section>
-            <blockquote>
-                <h2>If you would like to contact me, please fill out the form below:</h2>
-            </blockquote>
-
-            <form method="POST">
-                <div class="input-row"></div>
-
-                <div class="input-group">
-                    <label id="first-name">First Name:</label>
-                    <input
-                        name="first-name"
-                        type="text"
-                        placeholder="Enter your first name"
-                        required
-                    />
-                </div>
-
-                <div class="input-group">
-                    <label for="last-name">Last Name:</label>
-                    <input
-                        name="last-name"
-                        type="text"
-                        placeholder="Enter your last name"
-                        required
-                    />
-                </div>
-
-                <div class="input-group">
-                    <label id="email">Email:</label>
-                    <input
-                        name="email"
-                        type="email"
-                        placeholder="Enter your email"
-                        required
-                    />
-                </div>
-
-                <div class="input-row">
-                    <div class="input-group">
-                        <label for="message">Select Message Type:</label>
-                        <select id="message">
-                            <option value="inquiry">Business Inquiry</option>
-                            <option value="feedback">Feedback</option>
-                            <option value="question">General Question</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="message-content">Message:</label>
-                        <textarea
-                            id="message-content"
-                            rows="4"
-                            cols="50"
-                            placeholder="Type your message here..."
-                            required
-                        ></textarea>
-                    </div>
-                </div>
-
-                <button type="submit" class="primary-button">Contact Me</button>
-            </form>
         </section>
+
 
         <!-- Testimonials Section -->
         <section id="testimonials-section">
@@ -186,34 +109,49 @@
             <form id="create-reference-form">
                 <div class="input-group">
                     <label for="ref-name">Name</label>
-                    <input
-                        type="text"
-                        id="ref-name"
-                        name="name"
-                        required
-                    />
+                    <input type="text" id="ref-name" name="name" required />
+                </div>
+
+                <!-- NEW -->
+                <div class="input-group">
+                    <label>Title:</label>
+                    <input type="text" id="ref-title" name="title" required />
                 </div>
 
                 <div class="input-group">
                     <label>
-                        Email:
-                        <input
-                            type="email"
-                            id="ref-email"
-                            name="email"
-                            required
-                        />
+                        Phone Number:
+                        <input type="tel" id="ref-phone" name="phone" required />
+                    </label>
+                </div>
+
+                <div class="input-group">
+                    <label>
+                        Email (optional):
+                        <input type="email" id="ref-email" name="email" />
                     </label>
                 </div>
 
                 <div class="input-group">
                     <label>
                         Company (optional):
-                        <input
-                            type="text"
-                            id="ref-company"
-                            name="company"
-                        />
+                        <input type="text" id="ref-company" name="company" />
+                    </label>
+                </div>
+
+                <!-- NEW -->
+                <div class="input-group">
+                    <label>
+                        Street Address (optional):
+                        <input type="text" id="ref-address" name="address" />
+                    </label>
+                </div>
+
+                <div class="input-group">
+                    <label>
+                        City / State / ZIP (optional):
+                        <input type="text" id="ref-location" name="location"
+                            placeholder="City, State ZIP (e.g. Los Angeles, CA 91608)" />
                     </label>
                 </div>
 
@@ -223,35 +161,70 @@
                 <div class="input-group">
                     <label>
                         Comment:
-                        <textarea
-                            id="ref-comment"
-                            name="comment"
-                        ></textarea>
+                        <textarea id="ref-comment" name="comment"></textarea>
                     </label>
                 </div>
 
                 <div class="input-group">
                     <label>
                         Rating 1-5:
-                        <input
-                            type="number"
-                            id="ref-rating"
-                            name="rating"
-                            min="1"
-                            max="5"
-                            step="0.5"
-                        />
+                        <input type="number" id="ref-rating" name="rating" min="1" max="5" step="0.5" />
                     </label>
                 </div>
 
                 <button type="submit" class="primary-button">Submit</button>
             </form>
         </section>
+
+        <!-- Contact Form Section -->
+        <section>
+            <blockquote>
+                <h2>If you would like to contact me, please fill out the form below:</h2>
+            </blockquote>
+
+            <form method="POST">
+                <div class="input-row"></div>
+
+                <div class="input-group">
+                    <label id="first-name">First Name:</label>
+                    <input name="first-name" type="text" placeholder="Enter your first name" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="last-name">Last Name:</label>
+                    <input name="last-name" type="text" placeholder="Enter your last name" required />
+                </div>
+
+                <div class="input-group">
+                    <label id="email">Email:</label>
+                    <input name="email" type="email" placeholder="Enter your email" required />
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="message">Select Message Type:</label>
+                        <select id="message">
+                            <option value="inquiry">Business Inquiry</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="question">General Question</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="message-content">Message:</label>
+                        <textarea id="message-content" rows="4" cols="50" placeholder="Type your message here..."
+                            required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="primary-button">Contact Me</button>
+            </form>
+        </section>
     </main>
 
-    <footer>
+    <!-- <footer>
         <p>&copy; 2024 Isaac Hammon</p>
-    </footer>
+    </footer> -->
 </body>
 
 </html>

@@ -1,95 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/output.css" />
-    <title>Isaac Hammon's Additional Projects Page</title>
-  </head>
 
-  <body class="bg-slate-100 flex h-screen">
-    <!-- Sidebar / Navbar -->
-    <div class="bg-stone-500 text-black w-52 flex flex-col">
-      <!-- Profile Section -->
-      <div class="flex flex-col items-center m-4">
-        <p class="text-white font-bold mb-2 text-center text-lg">Isaac Hammon</p>
-        <a href="#">
-          <img
-            src="images/profile-1.jpg"
-            alt="picture"
-            class="w-14 h-14 rounded-full object-cover border-2 border-slate-500 shadow-md mb-4"
-          />
-        </a>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="src/output.css" />
+  <title>Isaac Hammon's Additional Projects Page</title>
+</head>
 
-      <!-- Menu Links -->
-      <nav class="flex-1 flex flex-col justify-between">
-        <ul class="flex flex-col text-sm text-slate-400 w-full items-center">
-          <li class="w-full">
-            <a href="/index.html" class="block w-full text-center py-3 hover:bg-orange-500 hover:text-white rounded transition">
-              <span>Home Page</span>
-            </a>
-          </li>
-          <li class="w-full mt-2">
-            <a href="#" class="block w-full text-center py-3 hover:bg-orange-500 hover:text-white rounded transition">
-              <span>References</span>
-            </a>
-          </li>
-          <li class="w-full mt-3">
-            <a href="#" class="block w-full text-center py-3 hover:bg-orange-500 hover:text-white rounded transition">
-              <span>Bridgerland</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+<body class="bg-slate-100 flex h-screen">
+  <!-- Sidebar / Navbar -->
+  <div class="bg-stone-500 text-black w-52 flex flex-col">
+    <!-- Profile Section -->
+    <div class="flex flex-col items-center m-4">
+      <p class="text-white font-bold mb-2 text-center text-lg">Isaac Hammon</p>
+      <a href="#">
+        <img src="images/profile-1.jpg" alt="picture"
+          class="w-14 h-14 rounded-full object-cover border-2 border-slate-500 shadow-md mb-4" />
+      </a>
     </div>
 
-    <!-- Main Content -->
-    <main class="flex-1 p-6 overflow-auto">
-      <h1 class="text-2xl font-bold text-slate-800 mb-8 text-center">
-        Additional Projects
-      </h1>
+    <!-- Menu Links -->
+    <nav class="flex-1 flex flex-col justify-between">
+      <ul class="flex flex-col text-sm text-slate-400 w-full items-center">
+        <li class="w-full">
+          <a href="/index.html"
+            class="block w-full text-center py-3 hover:bg-orange-500 hover:text-white rounded transition">
+            <span>Home Page</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
-        <!-- Card 1 -->
-        <div class="flex flex-col items-center space-y-4">
-          <h2 class="text-lg font-bold text-slate-800 text-center">
-            Personal To-Do List App
-          </h2>
-          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition w-full max-w-sm">
-            <p class="text-slate-600 text-sm text-center">
-             A simple app that I built to keep track of daily tasks. Users can add, mark as complete, and delete tasks. Built using HTML, CSS, and JavaScript for the frontend, and optionally Python with Flask or Node.js for saving tasks locally.
-             Skills Practiced: DOM manipulation, event handling, local storage, basic UI design.
-            </p>
-          </div>
-        </div>
+  <!-- Main Content -->
+  <main class="flex-1 p-6 overflow-auto">
+    <h1 class="text-2xl font-bold text-slate-800 mb-8 text-center">
+      Additional Projects
+    </h1>
 
-        <!-- Card 2 -->
-        <div class="flex flex-col items-center space-y-4">
-          <h2 class="text-lg font-bold text-slate-800 text-center">
-            Weather Checker
-          </h2>
-          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition w-full max-w-sm">
-            <p class="text-slate-600 text-sm text-center">
-              An app that I created where you enter a city name and it fetches the current weather using a public API (like OpenWeatherMap). Displays temperature, humidity, and weather conditions.
-              Skills Practiced: API requests, JSON parsing, asynchronous programming, and working with APIs.
-            </p>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="flex flex-col items-center space-y-4">
-          <h2 class="text-lg font-bold text-slate-800 text-center">
-            Digital Journal
-          </h2>
-          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition w-full max-w-sm">
-            <p class="text-slate-600 text-sm text-center">
-              A personal diary app where users can write, edit, and delete entries. Data is stored locally on the device.
-              Skills Practiced: File handling or local storage, CRUD operations, and UI design.
-            </p>
-          </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+      <!-- Card 1 -->
+      <div class="flex flex-col items-center space-y-4">
+        <h2 class="text-lg font-bold text-slate-800 text-center">
+          Personal To-Do List App
+        </h2>
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition w-full max-w-sm">
+          <p class="text-slate-600 text-sm text-center">
+            A simple app that I built to keep track of daily tasks. Users can add, mark as complete, and delete tasks.
+            Built using HTML, CSS, and JavaScript for the frontend, and optionally Python with Flask or Node.js for
+            saving tasks locally.
+            Skills Practiced: DOM manipulation, event handling, local storage, basic UI design.
+          </p>
         </div>
       </div>
-    </main>
-  </body>
+
+      <!-- Card 2 -->
+      <div class="flex flex-col items-center space-y-4">
+        <h2 class="text-lg font-bold text-slate-800 text-center">
+          Weather Checker
+        </h2>
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition w-full max-w-sm">
+          <p class="text-slate-600 text-sm text-center">
+            An app that I created where you enter a city name and it fetches the current weather using a public API
+            (like OpenWeatherMap). Displays temperature, humidity, and weather conditions.
+            Skills Practiced: API requests, JSON parsing, asynchronous programming, and working with APIs.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="flex flex-col items-center space-y-4">
+        <h2 class="text-lg font-bold text-slate-800 text-center">
+          Digital Journal
+        </h2>
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition w-full max-w-sm">
+          <p class="text-slate-600 text-sm text-center">
+            A personal diary app where users can write, edit, and delete entries. Data is stored locally on the device.
+            Skills Practiced: File handling or local storage, CRUD operations, and UI design.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
 </html>

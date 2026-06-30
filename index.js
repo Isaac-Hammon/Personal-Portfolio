@@ -1,98 +1,102 @@
 const qaItems = [
 	{
 		title: "Personal Resume Website",
-		URL: "https://github.com/Isaac-Hammon/Personal-Portfolio.git", // Placeholder URL
+		URL: "https://github.com/Isaac-Hammon/Personal-Portfolio.git",
 		decription:
-			"This project involved creating a personal resume website using HTML, CSS, and JavaScript to showcase my skills, projects, and experience as a web developer. The website features a responsive design, interactive elements, and a clean layout to provide an engaging user experience.",
+			"This project involved creating a personal resume website using HTML, CSS, and JavaScript to showcase my skills.",
 	},
 	{
 		title: "My Game of War Project",
-		URL: "https://github.com/Isaac-Hammon/Personal-Portfolio.git", // Placeholder URL
+		URL: "https://github.com/Isaac-Hammon/Personal-Portfolio.git",
 		decription:
-			"This project that I made when I first enrolled in my web development course at my technical college was a simple 'Game of War' card game that I created using C# in Visual Studio. The game allowed two players to compete against each other by drawing cards from a deck and comparing their values to determine the winner of each round.",
+			"Simple Game of War built in C# allowing two players to draw cards and compare values.",
 	},
 	{
 		title: "My Car Dealership Project",
-		URL: "https://github.com/Isaac-Hammon/Personal-Portfolio.git", // Placeholder URL
+		URL: "https://github.com/Isaac-Hammon/Personal-Portfolio.git",
 		decription:
-			"This project that I made when I first enrolled in my web development course at my technical college was a simple car dealership management system that I created using C# in Visual Studio. The system allowed users to add, remove, and view cars in the dealership's inventory, as well as search for specific cars based on various criteria such as make, model, and year.",
+			"Car dealership system built in C# allowing inventory management and search functionality.",
 	},
 ];
 
 const projectsListDiv = document.getElementById("project");
 
 qaItems.forEach((qaItem) => {
-	// Create elements for title, URL, and description
-	const titleText = qaItem.title;
-	const URLText = qaItem.URL;
-	const descriptionText = qaItem.decription;
-	const br = document.createElement("br");
-	const br2 = document.createElement("br");
-
-	// Create and append title, URL, and description elements to the projects list div
 	const titleDiv = document.createElement("div");
 	titleDiv.classList.add("project-title");
-	titleDiv.textContent = titleText;
+	titleDiv.textContent = qaItem.title;
 
-	// Create URL as a clickable link
 	const URLDiv = document.createElement("a");
-	URLDiv.setAttribute("href", URLText);
+	URLDiv.href = qaItem.URL;
 	URLDiv.target = "_blank";
 	URLDiv.classList.add("project-URL");
-	URLDiv.textContent = URLText;
+	URLDiv.textContent = qaItem.URL;
 
-	// Create description div
 	const descriptionDiv = document.createElement("div");
 	descriptionDiv.classList.add("project-description");
-	descriptionDiv.textContent = descriptionText;
+	descriptionDiv.textContent = qaItem.decription;
 
-	// Pulls up the elements in order on the website. (Title, Description, URL, Breaks).
 	projectsListDiv.appendChild(titleDiv);
-
 	projectsListDiv.appendChild(descriptionDiv);
-
 	projectsListDiv.appendChild(URLDiv);
- 
+
 	titleDiv.addEventListener("click", () => {
 		titleDiv.classList.toggle("active");
 		URLDiv.classList.toggle("active");
 		descriptionDiv.classList.toggle("active");
-	}); 
+	});
 
-	projectsListDiv.appendChild(br);
-
-	projectsListDiv.appendChild(br2);
-
+	projectsListDiv.appendChild(document.createElement("br"));
+	projectsListDiv.appendChild(document.createElement("br"));
 });
 
-//Base Classes
+// =========================
+// Phone Formatter (NEW)
+// =========================
+
+function formatPhoneNumber(value) {
+	if (!value) return null;
+
+	const digits = value.replace(/\D/g, "");
+
+	if (digits.length !== 10) return value; // leave invalid as-is
+
+	return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
+}
+
+// =========================
+// Base Class
+// =========================
+
 class DatabaseObject {
 	toString() {
 		throw new Error("Not implemented");
 	}
 }
 
-//Reference Class
-class Reference extends DatabaseObject {
+// =========================
+// Reference Model
+// =========================
 
-	constructor({ id, name, email, company }) {
+class Reference extends DatabaseObject {
+	constructor({ id, name, title, phone, email, company, address, location }) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.title = title;
+		this.phone = phone;
 		this.email = email;
 		this.company = company;
+		this.address = address;
+		this.location = location;
 	}
-
-	toString() {
-		return `${this.id} ${this.name} ${this.email} ${this.company}`;
-	}
-
 }
 
+// =========================
+// Testimonial Model
+// =========================
 
-//Testimonial Class
 class Testimonial extends DatabaseObject {
-
 	constructor({ id, comment, rating, referenceId }) {
 		super();
 		this.id = id;
@@ -100,35 +104,40 @@ class Testimonial extends DatabaseObject {
 		this.rating = rating;
 		this.referenceId = referenceId;
 	}
-	toString() {
-		return `${this.comment} ${this.rating}`;
-	}
-	// static create({ id, comment, rating, referenceId }) {
-	// 	return new Testimonial({ id, comment, rating, referenceId });
-	// }
-
 }
 
-//Reference Dao Class
+// =========================
+// DAO Base
+// =========================
+
 class ReferenceDao {
-		static seeds = [
+	static seeds = [
 		{
 			id: 1,
-			name: "Capt. John Price",
-			email: "N/A",
-			company: "British Special Air Service (SAS)"
+			name: "Sam Jarvis",
+			title: "Shift Lead",
+			phone: "435-890-2122",
+			company: "Zigg Design LLC",
+			address: "1665 W 2960 S",
+			location: "Nibley, UT 84321",
 		},
 		{
-			id: 2, 
-			name: "Eddard 'Ned' Stark", 
-			email: "N/A",
-			company: "House Stark (Lord of Winterfell, Warden of the North, and Hand of the King.)"
+			id: 2,
+			name: "Mathew Mansfield",
+			title: "Coworker",
+			phone: "435-881-5355",
+			company: "Zigg Design LLC",
+			address: "1665 W 2960 S",
+			location: "Nibley, UT 84321",
 		},
 		{
-			id: 3, 
-			name: "Thorin Oakenshield",
-			email: "N/A", 
-			company: "Erebor (The King under the Mountain, and leader of Durin's Folk.)"
+			id: 3,
+			name: "Jesse Shaffer",
+			title: "Instructor",
+			phone: "435-735-6780",
+			company: "Bridgerland Technical College",
+			address: "1301 N 600 W",
+			location: "Logan, UT 84321",
 		},
 	];
 
@@ -138,151 +147,55 @@ class ReferenceDao {
 	create(reference) {
 		throw new Error("Not Implemented");
 	}
-	update(reference) {
-		throw new Error("Not Implemented");
-	}
-
 }
 
+// =========================
+// Session Storage DAO
+// =========================
 
-
-// Testiomnial Dao Class
-class TestimonialDao {
-		static seeds = [
-		{
-			id: 1, 
-			comment: "Isaac Hammon is an exceptional team player and a natural leader. His ability to strategize and execute complex missions under pressure is unparalleled. I'd give him five stars, but I'm the best there is.",
-			rating: 4.9,
-			referenceId: 1
-		}, 
-		{
-			id: 2, 
-			comment: "Ser Isaac Hammon has proven himself time and again to be a loyal and honorable knight to House Stark. Through his many years of service to myself, my family and the people of the North, I have granted him with the title of Ser. I would trust him with my life and the lives of my family.",
-			rating: 5.0,
-			referenceId: 2
-		},
-		{
-			id: 3, 
-			comment: "Isaac Hammon is a brave and skilled warrior. He has fought alongside me in many battles and has always shown great courage and determination on the field. I would traverse through Mordor itself with him by my side. Although, his height makes me feel self-conscious so I am ubale to give him a fifth star.",
-			rating: 4.0, 
-			referenceId: 3
-		},
-	];
-		getAll() {
-		throw new Error("Not Implemented");
-	}
-	create(reference) {
-		throw new Error("Not Implemented");
-	}
-	update(reference) {
-		throw new Error("Not Implemented");
-	}
-
-
-}
-
-//Session Storage Reference Dao Class
 class SessionStorageReferenceDao extends ReferenceDao {
 	constructor() {
 		super();
 		this.database = sessionStorage;
 	}
-getAll() {
-		const referencesAsJSON = this.database.getItem("references");
-		const referencesData = referencesAsJSON ? JSON.parse(referencesAsJSON) : ReferenceDao.seeds;
-		return referencesData.map((r) => new Reference(r));
+
+	getAll() {
+		const data = this.database.getItem("references");
+		const parsed = data ? JSON.parse(data) : ReferenceDao.seeds;
+		return parsed.map((r) => new Reference(r));
 	}
-create(reference) {
-	const refs = this.getAll();
-	refs.push(reference);
-	this.database.setItem("references", JSON.stringify(refs));
-}
-}
 
-//Cookie Storage Reference Dao Class
-class CookieStorageReferenceDao extends ReferenceDao {
-  constructor() {
-    super();
-    this.database = document.cookie;
-  }
-
-  getAll() {
-    const cookieValue = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("references="))
-      ?.split("=")[1];
-
-    const referencesData = cookieValue
-      ? JSON.parse(decodeURIComponent(cookieValue))
-      : ReferenceDao.seeds;
-
-    return referencesData.map((referenceData) => new Reference(referenceData));
-  }
-
-  create(reference) {
-    const existingReferences = this.getAll();
-    existingReferences.push(reference);
-
-    document.cookie = `references=${encodeURIComponent(
-      JSON.stringify(existingReferences)
-    )}; max-age=30`;
-  }
-
-  update(reference) {
-    const existingReferences = this.getAll();
-
-    const indexToDelete = existingReferences.findIndex(
-      (referenceInList) => referenceInList.name == reference.name
-    );
-
-    existingReferences.splice(indexToDelete, 1, reference);
-
-    document.cookie = `references=${encodeURIComponent(
-      JSON.stringify(existingReferences)
-    )}; max-age=30`;
-  }
+	create(reference) {
+		const list = this.getAll();
+		list.push(reference);
+		this.database.setItem("references", JSON.stringify(list));
+	}
 }
 
+// =========================
+// Testimonials DAO
+// =========================
 
-
-//Session Storage Testimonial Dao Class
-class SessionStorageTestimonialDao extends TestimonialDao {
-		constructor() {
-		super();
+class SessionStorageTestimonialDao {
+	constructor() {
 		this.database = sessionStorage;
 	}
-getAll() {
-		const testimonialsAsJSON = this.database.getItem("testimonials");
-		const  testimonialsData =  testimonialsAsJSON ? JSON.parse( testimonialsAsJSON) : TestimonialDao.seeds;
-		return  testimonialsData.map((t) => new Testimonial(t));
-	}
-create(testimonial) {
-	const tests = this.getAll();
-	tests.push(testimonial);
-	this.database.setItem("testimonials", JSON.stringify(tests));
-}
-}
 
-//Cookie Storage Testimonial Dao Class
-class CookieStorageTestimonialDao extends TestimonialDao {
 	getAll() {
-	const cookieValue = document.cookie
-	.split("; ")
-	.find((row) => row.startsWith("testimonials="))
-	?.split("=")[1];
-
-	const testimonialsData = cookieValue ? JSON.parse(cookieValue) : TestimonialDao.seeds;
-	return testimonialsData.map(
-		(testimonialData) => new Testimonial(testimonialData));
-
+		const data = this.database.getItem("testimonials");
+		return (data ? JSON.parse(data) : []).map((t) => new Testimonial(t));
 	}
 
 	create(testimonial) {
-	const existingTestimonials = this.getAll();
-    existingTestimonials.push(testimonial);
-    document.cookie = `testimonials=${JSON.stringify(existingTestimonials)}; max-age=30`;
+		const list = this.getAll();
+		list.push(testimonial);
+		this.database.setItem("testimonials", JSON.stringify(list));
+	}
 }
-}
+
+// =========================
+// Service Layer
+// =========================
 
 class CreateTestimonial {
 	constructor(referenceDao, testimonialDao) {
@@ -293,127 +206,114 @@ class CreateTestimonial {
 	createReferencewithOptionalTestimonial(referenceData, testimonialData = null) {
 		const reference = new Reference(referenceData);
 		this.referenceDao.create(reference);
-	if (testimonialData) {
-		const testimonial = new Testimonial({...testimonialData, referenceId: reference.id});
-		this.testimonialDao.create(testimonial);
-	}
-		
+
+		if (testimonialData) {
+			const testimonial = new Testimonial({
+				...testimonialData,
+				referenceId: reference.id,
+			});
+			this.testimonialDao.create(testimonial);
+		}
 	}
 }
 
-// Switch between commenting each out to check for functionality on whether the input information is being saved to the Session or Cookies. 
-//Session Storage
+// =========================
+// INIT
+// =========================
+
 const referenceDao = new SessionStorageReferenceDao();
 const testimonialDao = new SessionStorageTestimonialDao();
 
-//Cookie Storage 
-// const referenceDao = new CookieStorageReferenceDao();
-// const testimonialDao = new CookieStorageTestimonialDao();
-
-const CreateTestimonialService = new CreateTestimonial(referenceDao, testimonialDao);
+const service = new CreateTestimonial(referenceDao, testimonialDao);
 
 const testimonials = testimonialDao.getAll();
 
-const average = testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length;
-
-// const testimonials = testimonialDao.getAll();
 const avgEl = document.getElementById("average-rating");
 
 if (testimonials.length === 0) {
-  avgEl.textContent = "Average Rating:";
+	avgEl.textContent = "Average Rating:";
 } else {
-  const average = testimonials.reduce((sum, t) => sum + Number(t.rating || 0), 0) / testimonials.length;
-  avgEl.textContent = `Average Rating: ${average.toFixed(1)}`;
+	const avg =
+		testimonials.reduce((sum, t) => sum + Number(t.rating || 0), 0) / testimonials.length;
+
+	avgEl.textContent = `Average Rating: ${avg.toFixed(1)}`;
 }
 
+// =========================
+// FORM HANDLER (UPDATED PHONE FORMATTING)
+// =========================
 
-
-//Form Submission
 const form = document.getElementById("create-reference-form");
 
-
 form.addEventListener("submit", (event) => {
-  event.preventDefault();
+	event.preventDefault();
 
-  const formData = new FormData(form);
+	const formData = new FormData(form);
 
-  const referenceData = {
-    id: Date.now(),
-    name: formData.get("name"),
-    email: formData.get("email"),
-    company: formData.get("company") || null,
-  };
+	const referenceData = {
+		id: Date.now(),
+		name: formData.get("name") || null,
+		title: formData.get("title") || null,
+		phone: formatPhoneNumber(formData.get("phone")), // ✅ HERE
+		email: formData.get("email") || null,
+		company: formData.get("company") || null,
+		address: formData.get("address") || null,
+		location: formData.get("location") || null,
+	};
 
-  const comment = formData.get("comment");
-  const rating = Number(formData.get("rating"));
+	const comment = formData.get("comment");
+	const rating = Number(formData.get("rating"));
 
-  if (rating && (rating < 1 || rating > 5)) {
-    alert("Rating must be between 1 and 5.");
-    return;
-  }
+	let testimonialData = null;
 
-  let testimonialData = null;
+	if (comment?.trim() && rating) {
+		testimonialData = {
+			id: Date.now(),
+			comment,
+			rating,
+		};
+	}
 
-  if (comment && rating) {
-    testimonialData = {
-      id: Date.now(),
-      comment,
-      rating,
-    };
-  }
+	service.createReferencewithOptionalTestimonial(referenceData, testimonialData);
 
-  CreateTestimonialService.createReferencewithOptionalTestimonial(
-    referenceData,
-    testimonialData
-  );
-
-  form.reset();
+	form.reset();
 });
 
-
+// =========================
+// RENDER REFERENCES
+// =========================
 
 const referenceList = document.getElementById("reference-list");
 const references = referenceDao.getAll();
 
-for (let i = 0; i < references.length; i++) {
-  const reference = references[i];
+references.forEach((reference) => {
+	const li = document.createElement("li");
+	const ul = document.createElement("ul");
 
-  const referenceLi = document.createElement("li");
+	const fields = [];
 
-  const detailsUl = document.createElement("ul");
+	if (reference.name) fields.push(`Name: ${reference.name}`);
+	if (reference.title) fields.push(`Title: ${reference.title}`);
+	if (reference.phone) fields.push(`Phone: ${reference.phone}`);
+	if (reference.email) fields.push(`Email: ${reference.email}`);
+	if (reference.company) fields.push(`Company: ${reference.company}`);
+	if (reference.address) fields.push(`Address: ${reference.address}`);
+	if (reference.location) fields.push(`Location: ${reference.location}`);
 
-  // Name
-  const nameLi = document.createElement("li");
-  nameLi.textContent = "Name: " + reference.name;
+	fields.forEach((text) => {
+		const item = document.createElement("li");
+		item.textContent = text;
+		ul.appendChild(item);
+	});
 
-  // Email
-  const emailLi = document.createElement("li");
-  emailLi.textContent = "Email: " + reference.email;
+	const related = testimonials.find((t) => t.referenceId === reference.id);
 
-  // Company
-  const companyLi = document.createElement("li");
-  companyLi.textContent = "Company: " + reference.company;
+	if (related) {
+		const t = document.createElement("li");
+		t.textContent = `Testimonial: ${related.comment} (${related.rating})`;
+		ul.appendChild(t);
+	}
 
-  detailsUl.appendChild(nameLi);
-  detailsUl.appendChild(emailLi);
-  detailsUl.appendChild(companyLi);
-
-  referenceLi.appendChild(detailsUl);
-
-  const relatedTestimonials = testimonials.filter(
-    (t) => t.referenceId === reference.id
-  );
-
-  if (relatedTestimonials.length > 0) {
-    const testimonial = relatedTestimonials[0];
-    const testimonialLi = document.createElement("li");
-    testimonialLi.textContent =
-      "Testimonial: " + testimonial.comment + " (" + testimonial.rating + ")";
-
-    detailsUl.appendChild(testimonialLi);
-  }
-
-  referenceList.appendChild(referenceLi);
-}
-
-
+	li.appendChild(ul);
+	referenceList.appendChild(li);
+});
