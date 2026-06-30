@@ -1,21 +1,21 @@
 const qaItems = [
 	{
-		title: "Personal Resume Website",
-		URL: "https://github.com/Isaac-Hammon/Personal-Portfolio.git",
+		title: "Music Manager Project",
+		URL: "https://github.com/Isaac-Hammon/MusicManager.git",
 		decription:
-			"This project involved creating a personal resume website using HTML, CSS, and JavaScript to showcase my skills.",
+			"A full-stack music management web application built with ASP.NET Razor Pages and C#. The app allows users to create, view, update, and delete songs in a personal music library. It features server-side rendering, form validation, and a structured MVC-style architecture to efficiently manage data and provide a smooth user experience.",
 	},
 	{
-		title: "My Game of War Project",
-		URL: "https://github.com/Isaac-Hammon/Personal-Portfolio.git",
+		title: "Next.js Portfolio Template Project",
+		URL: "https://final-project-five-drab-22.vercel.app/",
 		decription:
-			"Simple Game of War built in C# allowing two players to draw cards and compare values.",
+			"A web application built with Next.js that showcases a portfolio template I designed and developed. The project focuses on clean UI design, responsive layouts, and reusable components to demonstrate modern frontend development practices.",
 	},
 	{
-		title: "My Car Dealership Project",
-		URL: "https://github.com/Isaac-Hammon/Personal-Portfolio.git",
+		title: "Next.js Recipe Database Website",
+		URL: "https://recipe-db-t6nk.vercel.app/",
 		decription:
-			"Car dealership system built in C# allowing inventory management and search functionality.",
+			"A Next.js web application that serves as a recipe database, allowing users to browse and view a collection of recipes through a clean, responsive interface. The project focuses on dynamic routing, reusable components, and efficient data organization.",
 	},
 ];
 
@@ -30,7 +30,7 @@ qaItems.forEach((qaItem) => {
 	URLDiv.href = qaItem.URL;
 	URLDiv.target = "_blank";
 	URLDiv.classList.add("project-URL");
-	URLDiv.textContent = qaItem.URL;
+	URLDiv.textContent = "View Project";
 
 	const descriptionDiv = document.createElement("div");
 	descriptionDiv.classList.add("project-description");
@@ -51,50 +51,40 @@ qaItems.forEach((qaItem) => {
 });
 
 // =========================
-// Phone Formatter (NEW)
+// Phone formatter (kept minimal + safer)
 // =========================
-
 function formatPhoneNumber(value) {
 	if (!value) return null;
 
 	const digits = value.replace(/\D/g, "");
 
-	if (digits.length !== 10) return value; // leave invalid as-is
+	if (digits.length !== 10) return value;
 
 	return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
 }
 
 // =========================
-// Base Class
+// Models
 // =========================
-
 class DatabaseObject {
 	toString() {
 		throw new Error("Not implemented");
 	}
 }
 
-// =========================
-// Reference Model
-// =========================
-
 class Reference extends DatabaseObject {
 	constructor({ id, name, title, phone, email, company, address, location }) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.title = title;
-		this.phone = phone;
-		this.email = email;
-		this.company = company;
-		this.address = address;
-		this.location = location;
+		this.name = name || null;
+		this.title = title || null;
+		this.phone = phone || null;
+		this.email = email || null;
+		this.company = company || null;
+		this.address = address || null;
+		this.location = location || null;
 	}
 }
-
-// =========================
-// Testimonial Model
-// =========================
 
 class Testimonial extends DatabaseObject {
 	constructor({ id, comment, rating, referenceId }) {
@@ -107,9 +97,8 @@ class Testimonial extends DatabaseObject {
 }
 
 // =========================
-// DAO Base
+// DAO
 // =========================
-
 class ReferenceDao {
 	static seeds = [
 		{
@@ -149,10 +138,6 @@ class ReferenceDao {
 	}
 }
 
-// =========================
-// Session Storage DAO
-// =========================
-
 class SessionStorageReferenceDao extends ReferenceDao {
 	constructor() {
 		super();
@@ -172,10 +157,6 @@ class SessionStorageReferenceDao extends ReferenceDao {
 	}
 }
 
-// =========================
-// Testimonials DAO
-// =========================
-
 class SessionStorageTestimonialDao {
 	constructor() {
 		this.database = sessionStorage;
@@ -194,9 +175,8 @@ class SessionStorageTestimonialDao {
 }
 
 // =========================
-// Service Layer
+// Service
 // =========================
-
 class CreateTestimonial {
 	constructor(referenceDao, testimonialDao) {
 		this.referenceDao = referenceDao;
@@ -204,14 +184,19 @@ class CreateTestimonial {
 	}
 
 	createReferencewithOptionalTestimonial(referenceData, testimonialData = null) {
-		const reference = new Reference(referenceData);
+		const reference = new Reference({
+			...referenceData,
+			phone: formatPhoneNumber(referenceData.phone),
+		});
+
 		this.referenceDao.create(reference);
 
-		if (testimonialData) {
+		if (testimonialData?.comment && testimonialData?.rating) {
 			const testimonial = new Testimonial({
 				...testimonialData,
 				referenceId: reference.id,
 			});
+
 			this.testimonialDao.create(testimonial);
 		}
 	}
@@ -220,10 +205,8 @@ class CreateTestimonial {
 // =========================
 // INIT
 // =========================
-
 const referenceDao = new SessionStorageReferenceDao();
 const testimonialDao = new SessionStorageTestimonialDao();
-
 const service = new CreateTestimonial(referenceDao, testimonialDao);
 
 const testimonials = testimonialDao.getAll();
@@ -240,9 +223,8 @@ if (testimonials.length === 0) {
 }
 
 // =========================
-// FORM HANDLER (UPDATED PHONE FORMATTING)
+// FORM HANDLER
 // =========================
-
 const form = document.getElementById("create-reference-form");
 
 form.addEventListener("submit", (event) => {
@@ -254,7 +236,7 @@ form.addEventListener("submit", (event) => {
 		id: Date.now(),
 		name: formData.get("name") || null,
 		title: formData.get("title") || null,
-		phone: formatPhoneNumber(formData.get("phone")), // ✅ HERE
+		phone: formData.get("phone") || null,
 		email: formData.get("email") || null,
 		company: formData.get("company") || null,
 		address: formData.get("address") || null,
@@ -280,9 +262,8 @@ form.addEventListener("submit", (event) => {
 });
 
 // =========================
-// RENDER REFERENCES
+// RENDER
 // =========================
-
 const referenceList = document.getElementById("reference-list");
 const references = referenceDao.getAll();
 
