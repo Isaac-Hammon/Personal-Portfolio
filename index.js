@@ -1,10 +1,10 @@
 const qaItems = [
-	{
-		title: "Music Manager Project",
-		URL: "https://github.com/Isaac-Hammon/MusicManager.git",
-		decription:
-			"A full-stack music management web application built with ASP.NET Razor Pages and C#. The app allows users to create, view, update, and delete songs in a personal music library. It features server-side rendering, form validation, and a structured MVC-style architecture to efficiently manage data and provide a smooth user experience.",
-	},
+	// {
+	// 	title: "Music Manager Project",
+	// 	URL: "https://github.com/Isaac-Hammon/MusicManager.git",
+	// 	decription:
+	// 		"A full-stack music management web application built with ASP.NET Razor Pages and C#. The app allows users to create, view, update, and delete songs in a personal music library. It features server-side rendering, form validation, and a structured MVC-style architecture to efficiently manage data and provide a smooth user experience.",
+	// },
 	{
 		title: "Next.js Portfolio Template Project",
 		URL: "https://final-project-five-drab-22.vercel.app/",
